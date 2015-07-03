@@ -1,0 +1,3 @@
+##Project: Ruby on Rails Final Project!!!
+
+Build Facebook! You'll build a large portion of the core Facebook user functionality in this project. We won't be worrying about the Javascript-heavy front end stuff but you won't need it to get a nice user experience. You should write at least a basic set of integration tests which let you know if each page is loading properly and unit tests to make sure your associations have been properly set up (e.g. testing that User.first.posts works properly).
