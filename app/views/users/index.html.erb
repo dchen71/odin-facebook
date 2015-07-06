@@ -1,0 +1,9 @@
+<% provide(:title, "User List") %>
+
+<div class="container text-center">
+	<% @users.each do |user| %>
+		<div class="user">
+			<p><%= user.name %></p>
+		</div>
+	<% end %>
+</div>
