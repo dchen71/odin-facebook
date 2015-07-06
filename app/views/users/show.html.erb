@@ -14,8 +14,11 @@
 	<hr>
 	<% if @user.posts.any? %>
 		<% @user.posts.each do |post| %>
-			<p><%= post.title %></p>
-			<p><%= post.content %></p>
+			<div class="well">
+				<p><%= post.title %></p>
+				<p><%= post.content %></p>
+			</div>
+			<%= will_paginate %>
 		<% end %>
 	<% else %>
 		<p>No posts yet!</p>

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, presence: true
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :friends
-  has_many :invites
+  has_many :invites, dependent: :destroy
 end

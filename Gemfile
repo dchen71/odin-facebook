@@ -33,7 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 #Use to paginate data entries
-gem 'paginate'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 #Use to fake data
 gem 'faker'
@@ -53,6 +54,11 @@ group :development, :test do
 
   #Use to check out new emails in browser
   gem 'letter_opener'
+end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
