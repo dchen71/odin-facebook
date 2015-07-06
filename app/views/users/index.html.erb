@@ -3,7 +3,7 @@
 <div class="container text-center">
 	<% @users.each do |user| %>
 		<div class="user">
-			<p><%= user.name %></p>
+			<%= link_to user.name, user_path(user.id) %>
 		</div>
 	<% end %>
 </div>
