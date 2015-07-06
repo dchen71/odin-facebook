@@ -4,9 +4,16 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
 
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <br>
+      <a href="http://gravatar.com/emails">change</a>
+      <hr>
+    </div>
+
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.label :name %><br />
+      <%= f.email_field :name, autofocus: true %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -29,6 +36,7 @@
     </div>
 
     <div class="actions">
+      <hr>
       <%= f.submit "Update" %>
     </div>
   <% end %>
