@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :posts
   get 'users/:id' => 'users#show'
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+  	member do
+  		get :friends
+  		get :invitations
+  	end
+  end
 
   root 'static_pages#index'
 

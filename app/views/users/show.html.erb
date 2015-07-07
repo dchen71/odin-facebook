@@ -8,6 +8,12 @@
 		<% if current_user.id == @user.id %>
 			<p><%= @user.email %></p>		
 		<% end %>
+		<div class="friend-list">
+			<p>Friends(<%= @user.friends.count %>)</p>
+			<% @user.friends.each do |friend| %>
+				<%= link_to gravatar_for(friend), user_path(friend) %>
+			<% end %>
+		</div>
 	</div>
 
 	<h1>Post History</h1>
