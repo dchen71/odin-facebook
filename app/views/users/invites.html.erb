@@ -8,11 +8,12 @@
 	<hr>
 	<% @invites.each do |invitee| %>
 		<div class="user">
-			<%= gravatar_for invitee.email %>
-			<%= link_to invitee.name, user_path(invitee.id) %>
-			<%= link_to "Add Friend", '#', class: 'btn btn-primary pull-right' %>
+			<%= gravatar_for(invitee.user) %>
+			<%= link_to invitee.user.name, user_path(invitee.user_id) %>
+			<%= link_to "Reject Request", invite_path, method: :delete, class: 'btn btn-danger pull-right' %>
+			<%= link_to "Add Friend", relationships_path, class: 'btn btn-success pull-right' %>
 		</div>
 	<% end %>
-	<%= will_paginate %>
+	<%= will_paginate @invites %>
 	</div>
 </div>

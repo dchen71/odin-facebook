@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	end
 
 	def invites
-		@user = User.find_by(id:params[:id])
+		@user = User.find_by(id: params[:id])
 		@invites = @user.invites.paginate(page: params[:page])
 	end
 

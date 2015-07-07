@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   		get :invites
   	end
   end
+  resources :relationships, only: [:create, :destroy]
+  resources :invites, only: [:create, :destroy]
+
 
   root 'static_pages#index'
 
