@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
   	member do
   		get :friends
-  		get :invitations
+  		get :invites
   	end
   end
 
