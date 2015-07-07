@@ -1,13 +1,13 @@
 class CreateRelationships < ActiveRecord::Migration
   def change
     create_table :relationships do |t|
+      t.integer :user_id
       t.integer :friend_id
-      t.integer :invite_id
 
       t.timestamps null: false
     end
+    add_index :relationships, :user_id
     add_index :relationships, :friend_id
-    add_index :relationships, :invite_id
-    add_index :relationships, [:invite_id, :friend_id], unique: true
+    add_index :relationships, [:friend_id, :user_id], unique: true
   end
 end
