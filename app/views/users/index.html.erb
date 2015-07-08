@@ -9,15 +9,19 @@
 			<%= link_to gravatar_for(user), user_path(user.id) %>
 			<%= link_to user.name, user_path(user.id) %>
 			<div class="pull-right">
-			<%= form_for(current_user.invites.build) do |f| %>
-				<%= hidden_field_tag :invite_id, user.id %>
-				<%= button_tag(class:"btn btn-primary") do %>
-					<%= content_tag :span, "Invite", class: "glyphicon glyphicon-plus" %>
-				<% end %>
+			<% if invited?(user.id) %>
+				<p class="btn btn-info pull-right disabled">Invited</p>
+			<% elsif 1==0 %>
+				<p class="btn btn-success pull-right">Friends<span class="glyphicon glyphicon-ok"></span></p>
+			<% else %>
+				<%= form_for(current_user.invites.build) do |f| %>
+					<%= hidden_field_tag :invite_id, user.id %>
+					<%= button_tag(class:"btn btn-primary") do %>
+						<%= content_tag :span, "Invite", class: "glyphicon glyphicon-plus" %>
+					<% end %>
+				<% end %>	
 			<% end %>
 			</div>
-			<p class="btn btn-success pull-right">Friends<span class="glyphicon glyphicon-ok"></span></p>
-			<p class="btn btn-info pull-right disabled">Invited</p>
 		</div>
 	<% end %>
 	<%= will_paginate %>

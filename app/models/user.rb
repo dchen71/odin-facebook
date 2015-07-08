@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :invites, class_name: "Invite",
   					 foreign_key: "invite_id",
   					 dependent: :destroy
+
 end
