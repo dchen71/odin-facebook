@@ -44,8 +44,16 @@
 		</div>
 	<% end %>
 	<% if flash[:success] %>
-		<div class="alert alert-success"></div>
-		<div class="alert alert-warning"></div>
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<p class="notice"><%= flash[:success] %></p>
+		</div>
+	<% end %>
+	<% if flash[:error] %>
+		<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<p class="notice"><%= flash[:error] %></p>
+		</div>
 	<% end %>
 </div>
 <%= yield %>

@@ -8,7 +8,12 @@
 		<div class="user">
 			<%= link_to gravatar_for(user), user_path(user.id) %>
 			<%= link_to user.name, user_path(user.id) %>
-			<%= link_to "Add Friend", invites_path , class: 'btn btn-primary pull-right' %>
+			<%= form_for(current_user.invites.build) do |f| %>
+				<%= hidden_field_tag :invite_id, user.id %>
+				<%= f.submit "Invite", class: 'btn btn-primary pull-right' %>
+			<% end %>
+			<p class="btn btn-success pull-right">Friends<span class="glyphicon glyphicon-ok"></span></p>
+			<p class="btn btn-info pull-right disabled">Invited</p>
 		</div>
 	<% end %>
 	<%= will_paginate %>

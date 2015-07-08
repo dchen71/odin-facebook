@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.where.not(id: current_user.id).paginate(page: params[:page], per_page: 10)
+		@invite = Invite.new
 	end
 
 	def show
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
 		@invites = @user.invites.paginate(page: params[:page])
 	end
 
-	#User.last.create(invite_id: User.first.id)
-	#user first has invitation, user last has it in friends list
+	#User.last.invites.create(user_id: User.first.id)
+	#user_id will be inviting user.last
 	#User.where("id = ?", User.first.invites.first.user_id)
 end
