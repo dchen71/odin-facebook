@@ -2,18 +2,20 @@
 
 <h1 class="text-center">All users</h1>
 
-<div class="row">
+<div>
 	<div class="col-md-offset-3 col-md-5">
 	<% @users.each do |user| %>
 		<div class="user">
 			<%= link_to gravatar_for(user), user_path(user.id) %>
 			<%= link_to user.name, user_path(user.id) %>
+			<div class="pull-right">
 			<%= form_for(current_user.invites.build) do |f| %>
 				<%= hidden_field_tag :invite_id, user.id %>
-				<%= button_tag(class:"btn btn-primary pull-right") do %>
+				<%= button_tag(class:"btn btn-primary") do %>
 					<%= content_tag :span, "Invite", class: "glyphicon glyphicon-plus" %>
 				<% end %>
 			<% end %>
+			</div>
 			<p class="btn btn-success pull-right">Friends<span class="glyphicon glyphicon-ok"></span></p>
 			<p class="btn btn-info pull-right disabled">Invited</p>
 		</div>
