@@ -10,7 +10,9 @@
 			<%= link_to user.name, user_path(user.id) %>
 			<%= form_for(current_user.invites.build) do |f| %>
 				<%= hidden_field_tag :invite_id, user.id %>
-				<%= f.submit "Invite", class: 'btn btn-primary pull-right' %>
+				<%= button_tag(class:"btn btn-primary pull-right") do %>
+					<%= content_tag :span, "Invite", class: "glyphicon glyphicon-plus" %>
+				<% end %>
 			<% end %>
 			<p class="btn btn-success pull-right">Friends<span class="glyphicon glyphicon-ok"></span></p>
 			<p class="btn btn-info pull-right disabled">Invited</p>
