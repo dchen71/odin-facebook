@@ -11,8 +11,10 @@ class InvitesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@invite = Invite.where(invite_id: current_user.id).find_by(user_id: params[:id]).destroy
+		flash[:success] = "Rejected friend request!" 
+		redirect_to invites_user_path(current_user.id)
+	end
 
-	#User.last.invites.create(user_id: User.first.id)
-	#user_id will be inviting user.last
-	#User.where("id = ?", User.first.invites.first.user_id)
 end

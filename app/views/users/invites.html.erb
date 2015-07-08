@@ -2,18 +2,22 @@
 
 <h1 class="text-center">Friend Requests</h1>
 
-<div class="row">
+<div>
 	<div class="col-md-offset-3 col-md-7">
 	<h3>Remaining Requests(<%= @invites.count%>)</h3>
 	<hr>
-	<% @invites.each do |invitee| %>
-		<div class="user">
-			<%= gravatar_for(invitee.user) %>
-			<%= link_to invitee.user.name, user_path(invitee.user_id) %>
-			<%= link_to "Reject Request", invite_path, method: :delete, class: 'btn btn-danger pull-right' %>
-			<%= link_to "Add Friend", relationships_path, class: 'btn btn-success pull-right' %>
-		</div>
+	<% if @invites.any? %>
+		<% @invites.each do |invitee| %>
+			<div class="user">
+				<%= gravatar_for(invitee.user) %>
+				<%= link_to invitee.user.name, user_path(invitee.user_id) %>
+				<%= link_to "Reject Request", invite_path(invitee.user_id), method: :delete, class: 'btn btn-danger pull-right' %>
+				<%= link_to "Add Friend", relationships_path, class: 'btn btn-success pull-right' %>
+			</div>
+		<% end %>
+		<%= will_paginate @invites %>
+	<% else %>
+		<p>No pending invites</p>
 	<% end %>
-	<%= will_paginate @invites %>
 	</div>
 </div>
