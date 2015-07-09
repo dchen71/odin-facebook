@@ -7,4 +7,13 @@ class RelationshipsController < ApplicationController
 		redirect_to friend_list_path(current_user)
 	end
 
+	def create
+		@invite = Invite.find_by(id: params[:invite_id])
+		@user = User.find_by(id: @invite.user_id)
+		current_user.friend(@user)
+		current_user.reject(@user)
+		flash[:success] = "Friend sucessfully added"
+		redirect_to invites_user_path(current_user)
+	end
+
 end

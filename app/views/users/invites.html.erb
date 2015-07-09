@@ -8,11 +8,20 @@
 	<hr>
 	<% if @invites.any? %>
 		<% @invites.each do |invitee| %>
-			<div class="user">
+			<div class="user col-md-12">
+				<div class="col-md-8">
 				<%= link_to gravatar_for(invitee.user), user_path(invitee.user_id) %>
 				<%= link_to invitee.user.name, user_path(invitee.user_id) %>
-				<%= link_to "Reject Request", invite_path(invitee.user_id), method: :delete, class: 'btn btn-danger pull-right' %>
-				<%= link_to "Add Friend", relationships_path, class: 'btn btn-success pull-right' %>
+				</div>
+				<div class="">
+					<%= form_for(@friend) do |f| %>
+						<%= hidden_field_tag :invite_id, invitee.id %>
+						<%= button_tag(class:"btn btn-success pull-right") do %>
+							<%= content_tag :span, "Add Friend"%>
+						<% end %>
+					<% end %>	
+					<%= link_to "Reject Request", invite_path(invitee.user_id), method: :delete, class: 'btn btn-danger pull-right' %>
+				</div>
 			</div>
 		<% end %>
 		<%= will_paginate @invites %>

@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 	def invites
 		@user = User.find_by(id: params[:id])
 		@invites = @user.invites.paginate(page: params[:page], per_page: 10)
+		@friend = current_user.friends.build
 	end
 
 	def friends
