@@ -5,13 +5,26 @@
 		<h2>User</h2>
 		<%= gravatar_for @user %>
 		<p><%= @user.name %></p>
-		<% if current_user.id == @user.id %>
-			<p><%= @user.email %></p>		
+		<% if current_user.id != @user.id %>
+			<div>
+			<% if invited?(@user.id) %>
+				<p class="btn btn-info disabled">Invited</p>
+			<% elsif 1==0 %>
+				<p class="btn btn-success">Friends<span class="glyphicon glyphicon-ok"></span></p>
+			<% else %>
+				<%= form_for(current_user.invites.build) do |f| %>
+					<%= hidden_field_tag :invite_id, @user.id %>
+					<%= button_tag(class:"btn btn-primary") do %>
+						<%= content_tag :span, "Invite", class: "glyphicon glyphicon-plus" %>
+					<% end %>
+				<% end %>	
+			<% end %>
+			</div>	
 		<% end %>
 		<div class="friend-list">
 			<p>Friends(<%= @user.friends.count %>)</p>
 			<% @user.friends.each do |friend| %>
-				<%= link_to gravatar_for(friend), user_path(friend) %>
+				<%= link_to gravatar_for(User.find_by(id: friend.user_id)), user_path(User.find_by(id: friend.user_id)) %>
 			<% end %>
 		</div>
 	</div>

@@ -3,7 +3,7 @@ User.create!(name: "Boo Mc.Boo",
 	         email: "example@test.com",
 	         password: "testtest",
 	         password_confirmation: "testtest")
-
+#Create 99 users
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@yahoo.com"
@@ -13,3 +13,4 @@ User.create!(name: "Boo Mc.Boo",
               password:              password,
               password_confirmation: password,)
 end
+

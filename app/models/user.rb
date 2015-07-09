@@ -14,4 +14,22 @@ class User < ActiveRecord::Base
   					 foreign_key: "invite_id",
   					 dependent: :destroy
 
+  def invite(other_user)
+    other_user.invites.create(user_id: self.id)
+  end
+
+  def reject(other_user)
+    invites.find_by(user_id: other_user.id).destroy
+  end
+
+  def friend(other_user)
+    friends.create(user_id: other_user.id)
+    other_user.friends.create(user_id: self.id)
+  end
+
+  def unfriend(other_user)
+    friends.find_by(user_id: other_user.id).destroy
+    other_user.friends.find_by(user_id: self.id).destroy
+  end
+
 end

@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20150708083232) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "friend_id"
-    t.integer  "invite_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "relationships", ["friend_id"], name: "index_relationships_on_friend_id", using: :btree
-  add_index "relationships", ["invite_id", "friend_id"], name: "index_relationships_on_invite_id_and_friend_id", unique: true, using: :btree
-  add_index "relationships", ["invite_id"], name: "index_relationships_on_invite_id", using: :btree
+  add_index "relationships", ["user_id", "friend_id"], name: "index_relationships_on_user_id_and_friend_id", unique: true, using: :btree
+  add_index "relationships", ["user_id"], name: "index_relationships_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
