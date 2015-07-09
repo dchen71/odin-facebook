@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, :except => :new
-	before_action :correct_user, only: [:show, :invites]
+	before_action :correct_user, only: [:invites]
 
 	def index
 		@users = User.where.not(id: current_user.id).paginate(page: params[:page], per_page: 10)

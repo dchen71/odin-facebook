@@ -6,7 +6,7 @@
 				<%= link_to friend_data(post).name, user_path(friend_data(post).id) %>
 			</div>
 		<div class="post col-md-offset-3">
-			<p><em><%= post.created_at %></em></p>
+			<p><em><%= time_ago_in_words(post.created_at) %></em></p>
 			<p><%= post.content %></p>
 		</div>
 		</div>
