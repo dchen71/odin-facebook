@@ -7,10 +7,10 @@
 		<p><%= @user.name %></p>
 		<% if current_user.id != @user.id %>
 			<div>
-			<% if invited?(@user.id) %>
-				<p class="btn btn-info disabled">Invited</p>
-			<% elsif 1==0 %>
+			<% if current_user.friends?(@user) %>
 				<p class="btn btn-success">Friends<span class="glyphicon glyphicon-ok"></span></p>
+			<% elsif current_user.invited?(@user) %>
+				<p class="btn btn-info disabled">Invited</p>
 			<% else %>
 				<%= form_for(current_user.invites.build) do |f| %>
 					<%= hidden_field_tag :invite_id, @user.id %>
