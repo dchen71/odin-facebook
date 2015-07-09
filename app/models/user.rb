@@ -32,4 +32,12 @@ class User < ActiveRecord::Base
     other_user.friends.find_by(user_id: self.id).destroy
   end
 
+  def friends?(other_user)
+    friends.where(user_id: other_user.id).any?
+  end
+
+  def invited?(other_user)
+    other_user.invites.where(user_id: self.id).any?
+  end
+
 end
