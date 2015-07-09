@@ -1,0 +1,16 @@
+<% provide(:title, "Posts") %>
+
+<h1 class="text-center">Posts</h1>
+<br>
+
+<div>
+	<div class="container text-center">
+		<%= form_for(current_user.posts.build) do |post| %>
+			<%= post.text_area :content, id: "post_input", class: "text-left", placeholder: "Enter some thoughts!"%>
+			<br>
+			<%= post.submit "Post", class: "btn btn-standard", id:"post_input_btn" %>
+		<% end %>		
+	</div>
+	<hr>
+	<%= render 'shared/posts' %>
+</div>

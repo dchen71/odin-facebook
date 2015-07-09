@@ -33,13 +33,7 @@
 	<h1>Post History</h1>
 	<hr>
 	<% if @user.posts.any? %>
-		<% @user.posts.each do |post| %>
-			<div class="well">
-				<p><%= post.title %></p>
-				<p><%= post.content %></p>
-			</div>
-			<%= will_paginate %>
-		<% end %>
+		<%= render 'shared/posts' %>
 	<% else %>
 		<p>No posts yet!</p>
 	<% end %>

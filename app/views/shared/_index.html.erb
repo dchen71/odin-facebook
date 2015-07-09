@@ -1,0 +1,11 @@
+<% provide(:title, "Home") %>
+
+<div class="container text-center well">
+	<h1>OdinFacebook</h1>
+	<% unless signed_in? %>
+		<p>A clone of facebook in which users may friend, like content by other users</p>
+		<p>Sign up today!</p>
+	<% else %>
+		<p>Welcome back <%= current_user.name %></p>
+	<% end %>
+</div>
