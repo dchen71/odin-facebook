@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :invites, only: [:create, :destroy]
 
+  get 'users/:id/friends' => "relationships#index", as: 'friend_list'
 
   root 'static_pages#index'
 

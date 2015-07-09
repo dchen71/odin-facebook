@@ -1,7 +1,7 @@
 <% provide(:title, "Profile") %>
 
 <div class="container text-center">
-	<div class="pull-left">
+	<div class="col-md-2">
 		<h2>User</h2>
 		<%= gravatar_for @user %>
 		<p><%= @user.name %></p>
@@ -22,9 +22,10 @@
 			</div>	
 		<% end %>
 		<div class="friend-list">
-			<p>Friends(<%= @user.friends.count %>)</p>
-			<% @user.friends.each do |friend| %>
-				<%= link_to gravatar_for(User.find_by(id: friend.user_id)), user_path(User.find_by(id: friend.user_id)) %>
+			<%= link_to "Friends (#{@user.friends.count})", friend_list_path(@user) %>
+			<br>
+			<% @user.friends.take(12).each do |friend| %>
+				<%= link_to gravatar_for(User.find_by(id: friend.user_id),size: 50), user_path(User.find_by(id: friend.user_id)) %>
 			<% end %>
 		</div>
 	</div>

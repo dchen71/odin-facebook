@@ -12,10 +12,11 @@ class UsersController < ApplicationController
 
 	def invites
 		@user = User.find_by(id: params[:id])
-		@invites = @user.invites.paginate(page: params[:page])
+		@invites = @user.invites.paginate(page: params[:page], per_page: 10)
 	end
 
-	#User.last.invites.create(user_id: User.first.id)
-	#user_id will be inviting user.last
-	#User.where("id = ?", User.first.invites.first.user_id)
+	def friends
+		@user = User.find_by(id:params[:id])
+		@friends = @user.friends.paginate(page:params[:page], per_page: 10)
+	end
 end
