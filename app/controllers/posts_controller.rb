@@ -20,7 +20,19 @@ class PostsController < ApplicationController
 	end
 
 	def edit
+		@post = Post.find_by(id: params[:id])
+	end
 
+	def update
+		@post = Post.find_by(id: params[:id])
+
+		if @post.update(post_params)
+			flash[:success] = "Post successfully updated"
+			redirect_to posts_path
+		else
+			flash[:error] = "Error updating post"
+			render 'edit'
+		end
 	end
 
 
@@ -31,7 +43,8 @@ class PostsController < ApplicationController
 
 # Confirms the correct user.
     def correct_user
-      @user = User.find(params[:id])
+      @post = Post.find(params[:id])
+      @user = User.find_by(id: @post.user_id)
       redirect_to(root_url) unless current_user == @user
     end			
 end

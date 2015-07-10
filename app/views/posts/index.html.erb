@@ -4,13 +4,7 @@
 <br>
 
 <div>
-	<div class="container text-center">
-		<%= form_for(@post) do |post| %>
-			<%= post.text_area :content, :id => "post_input", placeholder: "Enter some thoughts!"%>
-			<br>
-			<%= post.submit "Post", class: "btn btn-standard", id:"post_input_btn" %>
-		<% end %>		
-	</div>
+	<%= render 'posts_form' %>
 	<hr>
 	<%= render 'shared/posts' %>
 </div>
