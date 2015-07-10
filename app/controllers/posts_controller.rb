@@ -30,8 +30,20 @@ class PostsController < ApplicationController
 			flash[:success] = "Post successfully updated"
 			redirect_to posts_path
 		else
-			flash[:error] = "Error updating post"
+			flash.now[:error] = "Error updating post"
 			render 'edit'
+		end
+	end
+
+	def destroy
+		@post = Post.find_by(id: params[:id])
+
+		if @post.destroy
+			flash[:success] = "Post successfully deleted"
+			redirect_to posts_path
+		else
+			flash.now[:error] = "Error deleting post"
+			render 'index'
 		end
 	end
 
