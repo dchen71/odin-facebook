@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :invites, class_name: "Invite",
   					 foreign_key: "invite_id",
   					 dependent: :destroy
+  has_many :comments
 
   def invite(other_user)
     other_user.invites.create(user_id: self.id)

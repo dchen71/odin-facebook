@@ -8,9 +8,19 @@
 			<div class="post col-md-offset-2 text-left">
 				<p><em><%= time_ago_in_words(post.created_at) %></em></p>
 				<p><%= post.content %></p>
+				<% if post.user_id == current_user.id %>
+					<div>
+						<%= link_to "Edit", edit_post_path(post) %>
+						<%= link_to "Delete", post_path(post), method: :delete %>
+					</div>
+				<% end %>
+				<hr>
 				<div>
-					<%= link_to "Edit", edit_post_path(post) %>
-					<%= link_to "Delete", post_path(post), method: :delete %>
+					<%= link_to "Comments", '#' %>
+					<ul class="list-inline pull-right">
+						<li>Likes: </li>
+						<li>Dislikes: </li>
+					</ul>
 				</div>
 			</div>
 		</div>
