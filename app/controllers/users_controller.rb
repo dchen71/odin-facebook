@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find_by(id: params[:id])
-		@posts = @user.posts.paginate(page: params[:page], per_page: 10)
+		@posts = @user.posts.reorder("created_at DESC").paginate(page: params[:page], per_page: 10)
 	end
 
 	def invites
