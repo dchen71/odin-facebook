@@ -50,12 +50,19 @@ class PostsController < ApplicationController
 
 	def comments
 		@post = Post.find_by(id: params[:id])
+		@comments = @post.comments.paginate(page: params[:page], per_page: 10)
 		@comment = current_user.comments.build()
-		@comments = Comment.find_by(post_id: @post.id)
 	end
 
   private
     def post_params
       params.require(:post).permit(:content)
+    end	
+
+# Confirms the correct user.
+    def correct_user
+      @post = Post.find(params[:id])
+      @user = User.find_by(id: @post.user_id)
+      redirect_to(root_url) unless current_user == @user
     end		
 end

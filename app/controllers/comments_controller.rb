@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :correct_user, only: [:edit, :update, :destroy]
+
 
 	def create
 		@comment = current_user.comments.build(comment_params)
@@ -22,7 +24,7 @@ class CommentsController < ApplicationController
 
 		if @comment.update(comment_params)
 			flash[:success] = "Comment successfully updated"
-			redirect_to comments_post_path
+			redirect_to comments_post_path(@comment.post_id)
 		else
 			flash.now[:error] = "Error updating comment"
 			render 'edit'
@@ -34,10 +36,10 @@ class CommentsController < ApplicationController
 
 		if @comment.destroy
 			flash[:success] = "Comment successfully deleted"
-			redirect_to comments_post_path
+			redirect_to comments_post_path(@comment.post_id)
 		else
 			flash[:error] = "Error deleting comment"
-			redirect_to comments_post_path
+			redirect_to comments_post_path(@comment.post_id)
 		end
 	end
 
