@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :correct_user, only: [:edit]
+	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index
 		@posts = current_user.posts.paginate(page:params[:page],per_page:10)
@@ -57,12 +57,5 @@ class PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(:content)
-    end
-
-# Confirms the correct user.
-    def correct_user
-      @post = Post.find(params[:id])
-      @user = User.find_by(id: @post.user_id)
-      redirect_to(root_url) unless current_user == @user
-    end			
+    end		
 end
