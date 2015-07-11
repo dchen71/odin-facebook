@@ -1,0 +1,7 @@
+<div class="container text-center">
+	<%= form_for(@comment) do |comment| %>
+		<%= comment.text_area :content, :id => "post_input", placeholder: "Enter some thoughts!"%>
+		<br>
+		<%= comment.submit "Post", class: "btn btn-standard", id:"post_input_btn" %>
+	<% end %>		
+</div>

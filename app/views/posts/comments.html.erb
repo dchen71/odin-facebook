@@ -1,0 +1,39 @@
+<% provide(:title, "Comments") %>
+
+<h1 class="text-center">Comments</h1>
+<br>
+
+<div>
+	<div class="col-md-offset-2 col-md-8">
+		<div class="well container-fluid">
+			<div class="col-md-1">
+				<%= link_to gravatar_for(friend_data(@post)), user_path(friend_data(@post)) %>
+				<%= link_to friend_data(@post).name, user_path(friend_data(@post).id) %>
+			</div>
+			<div class="post col-md-offset-2 text-left">
+				<p><em><%= time_ago_in_words(@post.created_at) %></em></p>
+				<p><%= @post.content %></p>
+				<% if @post.user_id == current_user.id %>
+					<div>
+						<%= link_to "Edit", edit_post_path(@post) %>
+						<%= link_to "Delete", post_path(@post), method: :delete %>
+					</div>
+				<% end %>
+				<hr>
+				<div>
+					<%= link_to "Comments (#{@post.comments.count})", comments_post_path(@post.id) %>
+					<ul class="list-inline pull-right">
+						<li>Likes: </li>
+						<li>Dislikes: </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<%= render 'shared/comments_form' %>
+	<hr>
+	<%= render 'shared/comments' %>
+</div>

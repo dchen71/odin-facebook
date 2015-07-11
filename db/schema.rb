@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150710081101) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "comments", ["user_id", "post_id"], name: "index_comments_on_user_id_and_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "invites", force: :cascade do |t|

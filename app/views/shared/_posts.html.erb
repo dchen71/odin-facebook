@@ -16,7 +16,7 @@
 				<% end %>
 				<hr>
 				<div>
-					<%= link_to "Comments", '#' %>
+					<%= link_to "Comments (#{post.comments.count})", comments_post_path(post.id) %>
 					<ul class="list-inline pull-right">
 						<li>Likes: </li>
 						<li>Dislikes: </li>

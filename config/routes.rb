@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {registrations: "registrations"}
-  resources :posts
-  resources :comments
+  resources :posts do
+    member do
+      get :comments
+      resources :comments, only: [:create, :edit, :update, :destroy]
+    end
+  end
+
 
   resources :users, only: [:index, :show] do
     member do

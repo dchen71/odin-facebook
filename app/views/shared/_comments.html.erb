@@ -1,0 +1,32 @@
+<div class="col-md-offset-2 col-md-8">
+	<% if @post.comments.any? %>
+		<% @comments.each do |comment| %>
+			<div class="well container-fluid">
+				<div class="col-md-1">
+					<%= link_to gravatar_for(friend_data(comment)), user_path(friend_data(comment)) %>
+					<%= link_to friend_data(comment).name, user_path(friend_data(comment).id) %>
+				</div>
+				<div class="post col-md-offset-2 text-left">
+					<p><em><%= time_ago_in_words(comment.created_at) %></em></p>
+					<p><%= comment.content %></p>
+					<% if comment.user_id == current_user.id %>
+						<div>
+							<%= link_to "Edit", edit_comment_path(comment) %>
+							<%= link_to "Delete", comment_path(comment), method: :delete %>
+						</div>
+					<% end %>
+					<hr>
+					<div>
+						<ul class="list-inline pull-right">
+							<li>Likes: </li>
+							<li>Dislikes: </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<% end %>
+		<%= will_paginate @comments %>
+	<% else %>
+		<p>No comments yet</p>
+	<% end %>
+</div>

@@ -48,6 +48,12 @@ class PostsController < ApplicationController
 	end
 
 
+	def comments
+		@post = Post.find_by(id: params[:id])
+		@comment = current_user.comments.build()
+		@comments = Comment.find_by(post_id: @post.id)
+	end
+
   private
     def post_params
       params.require(:post).permit(:content)
