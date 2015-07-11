@@ -5,12 +5,13 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = current_user.comments.build(comment_params)
-		
+		@comment.post_id = params[:id]
+
 		if @comment.save
 			flash[:success] = "Comment sucessfully added"
 			redirect_to comments_post_path
 		else
-			flash[:error] = "Error adding comment"
+			flash[:error] = comment_params
 			redirect_to comments_post_path
 		end
 	end
@@ -46,6 +47,13 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:content, :id, :post_id, :user_id)
+		params.require(:comment).permit(:content)
 	end
+
+# Confirms the correct user.
+    def correct_user
+      @comment = Comment.find(params[:id])
+      @user = User.find_by(id: @comment.user_id)
+      redirect_to(root_url) unless current_user == @user
+    end		
 end
