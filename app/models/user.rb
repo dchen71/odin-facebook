@@ -41,4 +41,11 @@ class User < ActiveRecord::Base
     other_user.invites.where(user_id: self.id).any?
   end
 
+  def feed
+    friend_ids = "SELECT friend_id FROM relationships
+                  WHERE user_id = :user_id"
+    Post.where("user_id IN (#{friend_ids}) 
+                OR user_id = :user_id", user_id: id)
+  end
+
 end

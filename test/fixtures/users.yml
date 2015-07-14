@@ -1,4 +1,15 @@
-Test_McMan: 
+Test1: 
   name: Test McMan
-  email: test@tester.com
-  encrypted_password: testtest
+  email: test1@tester.com
+
+Test2:
+  name: Testy McMan
+  email: test2@tester.com
+
+Test3:
+  name: Testo McMan
+  email: test3@tester.com
+
+Test4:
+  name: Tester McMan
+  email: test4@tester.com
