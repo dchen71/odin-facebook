@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	before_action :correct_user, only: [:edit, :update, :destroy]
 
 	def index
-		@posts = current_user.posts.paginate(page:params[:page],per_page:10)
+		@posts = current_user.feed.reorder("created_at DESC").paginate(page:params[:page],per_page:10)
 		@post = Post.new
 	end
 
