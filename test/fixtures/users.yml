@@ -1,15 +1,15 @@
-Test1: 
+user1: 
   name: Test McMan
   email: test1@tester.com
 
-Test2:
+user2:
   name: Testy McMan
   email: test2@tester.com
 
-Test3:
+user3:
   name: Testo McMan
   email: test3@tester.com
 
-Test4:
+user4:
   name: Tester McMan
   email: test4@tester.com
