@@ -18,8 +18,14 @@
 				<div>
 					<%= link_to "Comments (#{post.comments.count})", comments_post_path(post.id) %>
 					<ul class="list-inline pull-right">
-						<li>Likes: </li>
-						<li>Dislikes: </li>
+						<li>Likes: <%= post.num_likes %></li>
+						<% if post.liked? %>
+							<%= link_to "Like", likes_path(post), class: "btn btn-primary" %>
+							<li class="btn btn-primary">Like </li>
+						<% else %>
+							<%= link_to "Unlike", like_path(post), method: :delete class: "btn btn-warning" %>
+							<li class="btn btn-warning">Unlike</li>
+						<% end %>
 					</ul>
 				</div>
 			</div>

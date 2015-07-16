@@ -18,8 +18,12 @@
 					<hr>
 					<div>
 						<ul class="list-inline pull-right">
-							<li>Likes: </li>
-							<li>Dislikes: </li>
+							<li>Likes: <%= comment.num_likes %> </li>
+							<% if comment.liked? %>
+								<%= link_to "Like", likes_path(comment), class: "btn btn-primary" %>
+							<% else %>
+								<%= link_to "Unlike", like_path(comment), method: :delete class: "btn btn-warning" %>
+							<% end %>
 						</ul>
 					</div>
 				</div>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :invites, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 
   get 'users/:id' => 'users#show'
   get 'users/:id/friends' => "relationships#index", as: 'friend_list'
