@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       get :comments
-      resources :comments, only: [:create, :edit, :update, :destroy]
+      resources :comments, only: [:create, :edit, :update, :destroy] do
+        member do
+          resources :likes, only: [:create,:destroy], as: :comment_likes
+        end
+      end
+      resources :likes, only: [:create, :destroy], as: :post_likes
     end
   end
+
+  resources :comments
 
 
   resources :users, only: [:index, :show] do
@@ -14,6 +21,8 @@ Rails.application.routes.draw do
       get :invites
     end
   end
+
+
   resources :relationships, only: [:create, :destroy]
   resources :invites, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
