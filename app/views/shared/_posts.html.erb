@@ -18,18 +18,16 @@
 				<div>
 					<%= link_to "Comments (#{post.comments.count})", comments_post_path(post.id) %>
 					<ul class="list-inline pull-right">
-						<li>Likes: <%= post.num_likes %></li>
 						<% unless post.user_id == current_user.id%>
 							<% unless post.liked? %>
 								<li>
-								<%= form_for(post.likes.build(user_id: current_user.id)) do |f| %>
-									<%= f.submit "Like", class: "btn btn-primary", id:"post_input_btn" %>
-								<% end %>
+								 <%= link_to "Like", post_likes_path(likeable_id: post.id, likeable_type: "Post", id:post.id), method: :post, class: "btn btn-primary" %>
 								<li>
 							<% else %>
-								<li><%= link_to "Unlike", post_like_path(post), method: :delete, class: "btn btn-warning" %></li>
+								<li><%= link_to "Unlike", post_like_path(likeable_id: post.id, likeable_type: "Post", id:post.id), method: :delete, class: "btn btn-warning" %></li>
 							<% end %>
 						<% end %>
+						<li>Likes: <%= post.num_likes %></li>
 					</ul>
 				</div>
 			</div>

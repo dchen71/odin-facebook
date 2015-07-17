@@ -18,16 +18,16 @@
 					<hr>
 					<div>
 						<ul class="list-inline pull-right">
-							<li>Likes: <%= comment.num_likes %> </li>
-								<% unless comment.user_id == current_user.id %>
-									<% if comment.liked? %>
-										<%= form_for(comment.likes.build(user_id: current_user.id)) do |f| %>
-											<%= f.submit "Like", class: "btn btn-primary", id:"post_input_btn" %>
-										<% end %>	
-									<% else %>
-										<%= link_to "Unlike", comment_like_path(comment), method: :delete, class: "btn btn-warning" %>
+							<% unless comment.user_id == current_user.id%>
+								<% unless comment.liked? %>
+									<li>
+									 <%= link_to "Like", comment_likes_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :post, class: "btn btn-primary" %>
+									<li>
+								<% else %>
+									<li><%= link_to "Unlike", comment_like_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :delete, class: "btn btn-warning" %></li>
 								<% end %>
 							<% end %>
+							<li>Likes: <%= comment.num_likes %> </li>
 						</ul>
 					</div>
 				</div>

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 			flash[:success] = "Comment sucessfully added"
 			redirect_to comments_post_path
 		else
-			flash[:error] = comment_params
+			flash[:error] = 'Error commenting'
 			redirect_to comments_post_path
 		end
 	end
