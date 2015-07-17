@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :send_welcome
+  
+  #Sends welcome email after creating user
+  def send_welcome
+    UserMailer.welcome_email(User.last).deliver_now
+  end
+
   validates :name, presence: true
 
   has_many :posts, dependent: :destroy
