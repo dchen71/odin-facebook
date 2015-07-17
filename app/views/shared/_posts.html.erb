@@ -21,9 +21,13 @@
 						<li>Likes: <%= post.num_likes %></li>
 						<% unless post.user_id == current_user.id%>
 							<% unless post.liked? %>
-								<%= link_to "Like", post_likes_path(post), class: "btn btn-primary" %>
+								<li>
+								<%= form_for(post.likes.build(user_id: current_user.id)) do |f| %>
+									<%= f.submit "Like", class: "btn btn-primary", id:"post_input_btn" %>
+								<% end %>
+								<li>
 							<% else %>
-								<%= link_to "Unlike", post_like_path(post), method: :delete, class: "btn btn-warning" %>
+								<li><%= link_to "Unlike", post_like_path(post), method: :delete, class: "btn btn-warning" %></li>
 							<% end %>
 						<% end %>
 					</ul>

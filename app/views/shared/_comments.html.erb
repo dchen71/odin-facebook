@@ -20,10 +20,12 @@
 						<ul class="list-inline pull-right">
 							<li>Likes: <%= comment.num_likes %> </li>
 								<% unless comment.user_id == current_user.id %>
-								<% if comment.liked? %>
-									<%= link_to "Like", comment_likes_path(comment), class: "btn btn-primary" %>
-								<% else %>
-									<%= link_to "Unlike", comment_like_path(comment), method: :delete, class: "btn btn-warning" %>
+									<% if comment.liked? %>
+										<%= form_for(comment.likes.build(user_id: current_user.id)) do |f| %>
+											<%= f.submit "Like", class: "btn btn-primary", id:"post_input_btn" %>
+										<% end %>	
+									<% else %>
+										<%= link_to "Unlike", comment_like_path(comment), method: :delete, class: "btn btn-warning" %>
 								<% end %>
 							<% end %>
 						</ul>
