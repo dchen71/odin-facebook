@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  after_create :send_welcome
+  #after_create :send_welcome
   
   #Sends welcome email after creating user
   def send_welcome
