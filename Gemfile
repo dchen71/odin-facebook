@@ -45,6 +45,9 @@ gem 'devise'
 #Gem to hide environment variables
 gem 'figaro'
 
+#Gem for facebook login
+gem 'omniauth-facebook'
+
 group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'

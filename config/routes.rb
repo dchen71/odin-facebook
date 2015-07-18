@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {registrations: "registrations"}
+  devise_for :users, :controllers => {registrations: "registrations", omniauth_callbacks: "users/callbacks"}
   resources :posts do
     member do
       get :comments
