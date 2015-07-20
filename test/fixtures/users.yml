@@ -1,15 +1,19 @@
 user1: 
   name: Test McMan
   email: test1@tester.com
+  encrypted_password: test
 
 user2:
   name: Testy McMan
   email: test2@tester.com
+  encrypted_password: test
 
 user3:
   name: Testo McMan
   email: test3@tester.com
+  encrypted_password: test
 
 user4:
   name: Tester McMan
   email: test4@tester.com
+  encrypted_password: test
