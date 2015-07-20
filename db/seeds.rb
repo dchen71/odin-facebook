@@ -27,7 +27,7 @@ end
 users = User.order(:id).take(10)
 others = User.order(id: :desc).take(10)
 users.each do |user|
-  others.each do|other|
+  others.each do |other|
     user.friend(other)
   end
 end
@@ -35,9 +35,11 @@ end
 
 #Create posts
 users = User.order(:id).take(10)
+others = User.order(id: :desc).take(10)
 5.times do
   content = Faker::Lorem.sentence(3)
   users.each { |user| user.posts.create!(content: content) }
+  others.each { |other| other.posts.create!(content: content) }
 end
 
 #Create comments
