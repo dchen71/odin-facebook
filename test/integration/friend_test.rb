@@ -26,16 +26,16 @@ class FriendTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should follow a user the standard way" do
+  test "should friend via post" do
     assert_difference '@user.friends.count', 1 do
-      post relationships_path, followed_id: @other.id
+      post relationships_path, @other
     end
   end
 
 
-  test "should unfollow a user the standard way" do
-    @user.follow(@other)
-    relationship = @user.active_relationships.find_by(followed_id: @other.id)
+  test "should unfriend via delete" do
+    @user.friend(@other)
+    relationship = @user.friends.find_by(user_id: @other.id)
     assert_difference '@user.friends.count', -1 do
       delete relationship_path(relationship)
     end
