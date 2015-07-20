@@ -30,7 +30,7 @@ class LikesController < ApplicationController
 # Confirms the correct user.
 	private
     def correct_user
-      @like = Like.find_by(likeable_id: params[:id], likeable_type: params[:likeable_type])
+      @like = Like.find_by(id: params[:id])
       @user = User.find_by(id: @like.user_id)
       redirect_to(root_url) unless current_user == @user
     end		

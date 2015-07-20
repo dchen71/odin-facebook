@@ -5,7 +5,7 @@ class FriendTest < ActionDispatch::IntegrationTest
   def setup
     @user  = users(:user5)
     @other = users(:user6)
-    sign_in @user
+    log_in_as(@user)
   end
 
   test 'user one with no friends' do
