@@ -7,10 +7,10 @@ class LikesController < ApplicationController
 	
 	  	  if @like.save
 	  	    flash[:success] = "Liked!"
-	  	    redirect_to posts_path
+	  	    redirect_to(:back)
 	  	  else
 	  	    flash[:error] = "Error liking"
-	  	    redirect_to posts_path
+	  	    redirect_to(:back)
 	  	  end
 	  	end
 
@@ -20,10 +20,10 @@ class LikesController < ApplicationController
 
 		if @like.destroy
 			flash[:success] = "Successfully unliked"
-			redirect_to posts_path
+			redirect_to(:back)
 		else
 			flash[:error] = "Error liking"
-			redirect_to posts_path
+			redirect_to(:back)
 		end
 	end
 

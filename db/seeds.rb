@@ -21,6 +21,8 @@ users.each do |user|
   others.each do|other|
     user.invite(other)
   end
+User.find(24).invite(User.first)
+User.find(48).invite(User.first)
 end
 
 #Create friends

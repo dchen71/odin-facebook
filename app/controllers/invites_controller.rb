@@ -4,10 +4,10 @@ class InvitesController < ApplicationController
 		@invite = @user.invites.build(user_id: current_user.id)
 		if @invite.save
 			flash[:success] = "Successfully sent friend request!"
-			redirect_to users_path
+			redirect_to(:back)
 		else
 			flash[:error] = "Error sending friend request!"
-			redirect_to users_path
+			redirect_to(:back)
 		end
 	end
 

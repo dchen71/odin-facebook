@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
 		@other_user = User.find_by(id: @relationship.user_id)
 		current_user.unfriend(@other_user)
 		flash[:success] = "User successfully unfriended"
-		redirect_to friend_list_path(current_user)
+		redirect_to(:back)
 	end
 
 	def create
@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
 		current_user.friend(@user)
 		current_user.reject(@user)
 		flash[:success] = "Friend sucessfully added"
-		redirect_to invites_user_path(current_user)
+		redirect_to(:back)
 	end
 
 end

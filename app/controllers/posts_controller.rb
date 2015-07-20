@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 			redirect_to posts_path
 		else
 			flash[:error] = "Error adding post"
-			redirect_to posts_path
+			redirect_to(:back)
 		end
 	end
 
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
 		if @post.update(post_params)
 			flash[:success] = "Post successfully updated"
-			redirect_to posts_path
+			redirect_to(:back)
 		else
 			flash.now[:error] = "Error updating post"
 			render 'edit'
