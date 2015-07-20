@@ -19,12 +19,4 @@ class PostTest < ActiveSupport::TestCase
 		assert_not @post.valid?
 	end
 
-	#test 'dependent comments will be destroyed' do
-	#	@post = posts(:post1)
-	#	@comment = comments(:com2)
-	#	assert_difference ('Comment.count'), -1 do
-	#		@post.destroy
-	#		@comment.reload
-	#	end
-	#end
 end
