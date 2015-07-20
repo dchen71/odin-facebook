@@ -3,9 +3,9 @@ require 'test_helper'
 class FriendTest < ActionDispatch::IntegrationTest
 
   def setup
-    @user  = users(:user1)
-    @other = users(:user2)
-    log_in_as(@user)
+    @user  = users(:user5)
+    @other = users(:user6)
+    sign_in @user
   end
 
   test 'user one with no friends' do
@@ -32,11 +32,6 @@ class FriendTest < ActionDispatch::IntegrationTest
     end
   end
 
-  #test "should follow a user with Ajax" do
-  #  assert_difference '@user.following.count', 1 do
-  #    xhr :post, relationships_path, followed_id: @other.id
-  #  end
-  #end
 
   test "should unfollow a user the standard way" do
     @user.follow(@other)
@@ -46,11 +41,4 @@ class FriendTest < ActionDispatch::IntegrationTest
     end
   end
 
-  #test "should unfollow a user with Ajax" do
-  #  @user.follow(@other)
-  #  relationship = @user.active_relationships.find_by(followed_id: @other.id)
-  #  assert_difference '@user.following.count', -1 do
-  #    xhr :delete, relationship_path(relationship)
-  #  end
-  #end
 end

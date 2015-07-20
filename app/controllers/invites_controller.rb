@@ -1,4 +1,6 @@
 class InvitesController < ApplicationController
+	before_action :authenticate_user!
+
 	def create
 		@user = User.find_by(id: params[:invite_id])
 		@invite = @user.invites.build(user_id: current_user.id)

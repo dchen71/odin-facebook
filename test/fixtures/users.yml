@@ -1,19 +1,29 @@
 user1: 
-  name: Test McMan
+  name: Test McMan the 1st
   email: test1@tester.com
   encrypted_password: test
 
 user2:
-  name: Testy McMan
+  name: Testy McMan the 2nd
   email: test2@tester.com
   encrypted_password: test
 
 user3:
-  name: Testo McMan
+  name: Testo McMan the 3rd
   email: test3@tester.com
   encrypted_password: test
 
 user4:
-  name: Tester McMan
+  name: Tester McMan the 4th
   email: test4@tester.com
+  encrypted_password: test
+
+user5:
+  name: Tester McMan the 5th
+  email: test5@tester.com
+  encrypted_password: test
+
+user6:
+  name: Tester McMan the 6th
+  email: test6@tester.com
   encrypted_password: test
