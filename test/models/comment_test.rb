@@ -30,6 +30,6 @@ class CommentTest < ActiveSupport::TestCase
   	assert_difference 'Like.count', 1 do
     	  	@like = @comment2.likes.create!(user_id: @user.id)
   	end
-  	assert @com2.liked?
+  	assert @comment2.liked?
   end
 end
