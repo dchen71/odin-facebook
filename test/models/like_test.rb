@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class LikeTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+
+  end
+
+  test 'validates presence of user id' do
+
+  end
+
+  test 'validates presence of likeable' do
+
+  end
+
+  test 'validates uniqueness of user id and likeable' do
+
+  end
 end

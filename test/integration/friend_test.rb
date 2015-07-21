@@ -18,6 +18,7 @@ class FriendTest < ActionDispatch::IntegrationTest
   end
 
   test "friend page" do
+    @user.friend(@other)
     get friends_user_path(@user)
     assert_not @user.friends.empty?
     assert_match @user.friends.count.to_s, response.body
@@ -27,17 +28,17 @@ class FriendTest < ActionDispatch::IntegrationTest
   end
 
   test "should friend via post" do
+    @other.invite(@user)
     assert_difference '@user.friends.count', 1 do
-      post relationships_path, @other
+      post relationships_path, id: Invite.last
     end
   end
 
 
   test "should unfriend via delete" do
     @user.friend(@other)
-    relationship = @user.friends.find_by(user_id: @other.id)
     assert_difference '@user.friends.count', -1 do
-      delete relationship_path(relationship)
+      delete relationship_path(id: Relationship.last.id)
     end
   end
 
