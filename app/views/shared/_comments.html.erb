@@ -21,13 +21,13 @@
 							<% unless comment.user_id == current_user.id%>
 								<% unless comment.liked? %>
 									<li>
-									 <%= link_to "Like", comment_likes_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :post, class: "btn btn-primary" %>
+									 <%= link_to "<span class='glyphicon glyphicon-thumbs-up'>Like</span>".html_safe, comment_likes_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :post, class: "btn btn-primary" %>
 									<li>
 								<% else %>
-									<li><%= link_to "Unlike", comment_like_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :delete, class: "btn btn-warning" %></li>
+									<li><%= link_to "<span class='glyphicon glyphicon-thumbs-down'>Unlike</span>".html_safe, comment_like_path(likeable_id: comment.id, likeable_type: "Comment", comment_id:comment.id), method: :delete, class: "btn btn-warning" %></li>
 								<% end %>
 							<% end %>
-							<li>Likes: <%= comment.num_likes %> </li>
+							<li><span class="glyphicon glyphicon-thumbs-up"><%= comment.num_likes %></span></li>
 						</ul>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OdinFacebook - <%= yield(:title) %></title>
+  <title>OdinBook - <%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,7 +9,7 @@
 <body>
 
 	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<%= link_to "OdinBook", root_url, :class => "navbar-brand" %>
 			</div>
@@ -22,7 +22,7 @@
 				<% if signed_in? %>
 				<li><%= link_to "Users", users_path %></li>
 				<li><%= link_to "Friends", friend_list_path(current_user.id) %></li>
-				<li><%= link_to "Notifications<span class='badge'>#{current_user.invites.count}</span>".html_safe, invites_user_path(current_user.id) %></li>
+				<li><%= link_to "Notifications <span class='badge'>#{current_user.invites.count}</span>".html_safe, invites_user_path(current_user.id) %></li>
 				<li><%= link_to "Profile", user_path(current_user.id) %></li>
 				<li><%= link_to "Options", edit_user_registration_path %></li>
 				<li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>

@@ -32,7 +32,7 @@
 								<li><%= link_to "Unlike", post_like_path(likeable_id: @post.id, likeable_type: "Post", id:@post.id), method: :delete, class: "btn btn-warning" %></li>
 							<% end %>
 						<% end %>
-						<li>Likes: <%= @post.num_likes %> </li>
+						<li><span class="glyphicon glyphicon-thumbs-up"> <%= @post.num_likes %> </span></li>
 					</ul>
 				</div>
 			</div>
