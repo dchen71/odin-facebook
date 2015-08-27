@@ -1,11 +1,12 @@
 <div class="col-md-offset-2 col-md-8 col-xs-offset-2 col-xs-8">
 	<% @posts.each do |post| %>
-		<div class="well container-fluid">
-			<div class="col-md-1 col-xs-">
+		<div class="well container-fluid col-md-12 col-xs-12">
+			<div class="col-md-2 col-xs-2">
 				<%= link_to gravatar_for(friend_data(post)), user_path(friend_data(post)) %>
+				<br>
 				<%= link_to friend_data(post).name, user_path(friend_data(post).id) %>
 			</div>
-			<div class="post col-md-offset-2 text-left col-xs-offset-2">
+			<div class="post text-left col-md-10 col-xs-10">
 				<p><em><%= time_ago_in_words(post.created_at) %></em></p>
 				<p><%= post.content %></p>
 				<% if post.user_id == current_user.id %>
