@@ -3,13 +3,13 @@
 <h1 class="text-center">Friend Requests</h1>
 
 <div>
-	<div class="col-md-offset-3 col-md-7">
+	<div class="col-md-offset-3 col-md-7 col-xs-offset-3 col-xs-7">
 	<h3>Remaining Requests(<%= @invites.count%>)</h3>
 	<hr>
 	<% if @invites.any? %>
 		<% @invites.each do |invitee| %>
-			<div class="user col-md-12">
-				<div class="col-md-8">
+			<div class="user col-md-12 col-xs-12">
+				<div class="col-md-8 col-xs-8">
 				<%= link_to gravatar_for(invitee.user), user_path(invitee.user_id) %>
 				<%= link_to invitee.user.name, user_path(invitee.user_id) %>
 				</div>
