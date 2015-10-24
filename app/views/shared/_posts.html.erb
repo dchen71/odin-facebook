@@ -1,6 +1,6 @@
 <div class="col-md-offset-2 col-md-8 col-xs-offset-2 col-xs-10">
 	<% @posts.each do |post| %>
-		<div class="well container-fluid col-md-12 col-xs-12">
+		<div class="well container-fluid col-md-12 col-xs-10">
 			<div class="col-md-2 col-xs-2">
 				<%= link_to gravatar_for(friend_data(post)), user_path(friend_data(post)) %>
 				<br>
