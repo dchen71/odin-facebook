@@ -4,13 +4,13 @@
 <br>
 
 <div>
-	<div class="col-md-offset-2 col-md-8 col-xs-8 col-xs-offset-2">
+	<div class="col-md-offset-2 col-md-8 col-xs-12">
 		<div class="well container-fluid">
-			<div class="col-md-1 col-xs-1">
+			<div class="col-md-1 col-xs-3">
 				<%= link_to gravatar_for(friend_data(@post)), user_path(friend_data(@post)) %>
 				<%= link_to friend_data(@post).name, user_path(friend_data(@post).id) %>
 			</div>
-			<div class="post col-md-offset-2 text-left col-xs-offset-2">
+			<div class="post col-md-offset-2 text-left col-xs-9">
 				<p><em><%= time_ago_in_words(@post.created_at) %></em></p>
 				<p><%= @post.content %></p>
 				<% if @post.user_id == current_user.id %>
@@ -26,10 +26,10 @@
 						<% unless @post.user_id == current_user.id%>
 							<% unless @post.liked? %>
 								<li>
-								 <%= link_to "Like", post_likes_path(likeable_id: @post.id, likeable_type: "Post", id:@post.id), method: :post, class: "btn btn-primary" %>
+								 <%= link_to "Like", post_likes_path(likeable_id: @post.id, likeable_type: "Post", id:@post.id), method: :post, class: "btn btn-primary btn-xs" %>
 								<li>
 							<% else %>
-								<li><%= link_to "Unlike", post_like_path(likeable_id: @post.id, likeable_type: "Post", id:@post.id), method: :delete, class: "btn btn-warning" %></li>
+								<li><%= link_to "Unlike", post_like_path(likeable_id: @post.id, likeable_type: "Post", id:@post.id), method: :delete, class: "btn btn-warning btn-xs" %></li>
 							<% end %>
 						<% end %>
 						<li><span class="glyphicon glyphicon-thumbs-up"> <%= @post.num_likes %> </span></li>
